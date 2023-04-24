@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B388FF"
+    tools:context=".fragments.StarredFragment">
+
+    <TextView
+        android:id="@+id/tvStarredTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="3dp"
+        android:text="Tärkeät asiat!"
+        android:textColor="@color/black"
+        android:textSize="20sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvStarredItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvStarredTitle"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/black"
+        android:textSize="20sp">
+
+    </TextView>
+
+</RelativeLayout>
