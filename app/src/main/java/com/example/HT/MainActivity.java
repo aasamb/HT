@@ -3,7 +3,9 @@ package com.example.HT;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.HT.fragments.StarredFragment;
@@ -54,6 +56,31 @@ public class MainActivity extends AppCompatActivity {
                 tabLayout.getTabAt(position).select();
             }
         });
+    }
+
+    public void switchToAddNewLutemon(View view)  {
+        Intent intent = new Intent(this, AddNewLutemonActivity.class);
+        startActivity(intent);
+    }
+
+    public void switchToListLutemons(View view)  {
+        Intent intent = new Intent(this, ListLutemonsActivity.class);
+        startActivity(intent);
+    }
+
+    public void switchToMoveLutemons(View view)  {
+        Intent intent = new Intent(this, MoveLutemonsActivity.class);
+        startActivity(intent);
+    }
+
+    public void switchToBattleFieldActivity(View view)  {
+        Intent intent = new Intent(this, BattleFieldActivity.class);
+        startActivity(intent);
+    }
+
+    public void switchTo(View view)  {
+        Intent intent = new Intent(this, TrainLutemonsActivity.class);
+        startActivity(intent);
     }
 
 

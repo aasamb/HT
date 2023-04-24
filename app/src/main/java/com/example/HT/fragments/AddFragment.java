@@ -49,7 +49,7 @@ public class AddFragment extends Fragment {
                 String details = itemDetails.getText().toString();
 
                 if (!details.equals(""))    {
-                    storage.addItem(new Lutemon(details, isStarred.isChecked()));
+                    storage.addLutemon(new Lutemon(details, isStarred.isChecked()));
                 }   else {
                     Toast.makeText(getActivity(), "Lisää teksti", Toast.LENGTH_LONG).show();
                 }

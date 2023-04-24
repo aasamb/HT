@@ -27,10 +27,10 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.itemDetails.setText(lutemons.get(position).getDetails());
+        holder.itemDetails.setText(lutemons.get(position).getName());
         holder.editImage.setImageResource(R.drawable.edit);
         holder.deleteImage.setImageResource(R.drawable.delete);
-        holder.editDetails.setText(lutemons.get(position).getDetails());
+        holder.editDetails.setText(lutemons.get(position).getName());
 
         holder.deleteImage.setOnClickListener(new View.OnClickListener() {
             @Override

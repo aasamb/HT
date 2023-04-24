@@ -1,31 +1,68 @@
 package com.example.HT;
 
-import java.util.Date;
-
 public class Lutemon {
-    private String details;
-    private Date date;
-    private boolean starred = false;
+    private static int idCounter = 0;
+    protected String name, color;
+    protected int attack, defense, experience = 0, maxHealth, health = maxHealth, id, wins = 0, defeats = 0;
 
-    public Lutemon(String item, boolean starred)    {
-        this.details = item;
-        this.date = new Date();
-        this.starred = starred;
+    public Lutemon(String name, int attack, int defense, int maxHealth) {
+        this.name = name;
+        this.attack = attack;
+        this.defense = defense;
+        this.maxHealth = maxHealth;
+        this.id = idCounter++;
     }
 
-    public String getDetails() {
-        return details;
+    public static int getNumberOfCreatedLutemons() {
+        return idCounter;
     }
 
-    public Date getDate() {
-        return date;
+    public String getColor() {
+        return color;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public int getAttack() {
+        return attack;
     }
 
-    public boolean isStarred() {
-        return starred;
+    public int getDefense() {
+        return defense;
     }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDefeats() {
+        return defeats;
+    }
+
+    public void attack() {
+
+    }
+
+    public void defense(Lutemon lutemon) {
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }
