@@ -10,17 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.HT.BattleField;
+import com.example.HT.Home;
 import com.example.HT.ItemListAdapter;
+import com.example.HT.Lutemon;
 import com.example.HT.R;
 import com.example.HT.Storage;
+import com.example.HT.TrainingArea;
+
+import java.util.ArrayList;
 
 
 public class ListFragment extends Fragment {
 
-    private Storage storage;
+    private Storage home, trainingArea, battleField;
 
     private RecyclerView recyclerView;
     private ItemListAdapter adapter;
+    private ArrayList<Lutemon> lutemonsArrayList;
 
 
 /*
@@ -45,9 +52,11 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
-        storage = Storage.getInstance();
+        home = Home.getInstance();
+        trainingArea = TrainingArea.getInstance();
+        battleField = BattleField.getInstance();
 
-        recyclerView = view.findViewById(R.id.rvItemList);
+        recyclerView = view.findViewById(R.id.rvAllLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ItemListAdapter(getContext().getApplicationContext(), storage.getItems());
         recyclerView.setAdapter(adapter);

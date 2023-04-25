@@ -1,9 +1,9 @@
 package com.example.HT;
 
-public class Lutemon {
+public abstract class Lutemon {
     private static int idCounter = 0;
     protected String name, color;
-    protected int attack, defense, experience = 0, maxHealth, health = maxHealth, id, wins = 0, defeats = 0;
+    protected int attack, defense, experience = 0, maxHealth, health = maxHealth, id, wins = 0, defeats = 0, image;
 
     public Lutemon(String name, int attack, int defense, int maxHealth) {
         this.name = name;
@@ -11,6 +11,10 @@ public class Lutemon {
         this.defense = defense;
         this.maxHealth = maxHealth;
         this.id = idCounter++;
+    }
+
+    public String getType() {
+        return this.toString();
     }
 
     public static int getNumberOfCreatedLutemons() {

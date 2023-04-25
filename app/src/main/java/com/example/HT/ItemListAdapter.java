@@ -22,15 +22,22 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
+        return new ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemon_view, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.itemDetails.setText(lutemons.get(position).getName());
-        holder.editImage.setImageResource(R.drawable.edit);
-        holder.deleteImage.setImageResource(R.drawable.delete);
-        holder.editDetails.setText(lutemons.get(position).getName());
+        holder.lutemonName.setText(lutemons.get(position).getName());
+        holder.lutemonType.setText("(" + lutemons.get(position).getType() + ")");
+        holder.attackTitle.setText("Hyökkäys: ");
+        holder.defenseTitle.setText("Puolustus: ");
+        holder.healthTitle.setText("Elämä: ");
+        holder.expTitle.setText("Kokemus: ");
+        holder.attackValue.setText(lutemons.get(position).getAttack());
+        holder.defenseValue.setText(lutemons.get(position).getDefense());
+        holder.healthValue.setText(lutemons.get(position).getHealth() + "/" + lutemons.get(position).getMaxHealth());
+        holder.expValue.setText(lutemons.get(position).getExperience());
+
 
         holder.deleteImage.setOnClickListener(new View.OnClickListener() {
             @Override
