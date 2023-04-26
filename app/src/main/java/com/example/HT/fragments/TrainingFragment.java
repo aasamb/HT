@@ -56,10 +56,12 @@ public class TrainingFragment extends Fragment {
         trainingArea = TrainingArea.getInstance();
         battleField = BattleField.getInstance();
 
+/*
         recyclerView = view.findViewById(R.id.rvAllLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ItemListAdapter(getContext().getApplicationContext(), storage.getItems());
+        adapter = new ItemListAdapter(getContext().getApplicationContext(), home.getLutemons());
         recyclerView.setAdapter(adapter);
+*/
 
 
 

@@ -48,6 +48,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         holder.defenseValue.setText(lutemons.get(position).getDefense());
         holder.healthValue.setText(lutemons.get(position).getHealth() + "/" + lutemons.get(position).getMaxHealth());
         holder.expValue.setText(lutemons.get(position).getExperience());
+        holder.id.setText(String.valueOf(lutemons.get(position).getId()));
 
         if(lutemonsAtTraining.containsValue(lutemons.get(position)))    {
             locationString = "Treenaamassa";
@@ -61,32 +62,6 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         holder.location.setText(locationString);
 
 
-        holder.deleteImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = holder.getAdapterPosition();
-                Storage.getInstance().removeItem(pos);
-                notifyItemRemoved(pos);
-            }
-        });
-
-        holder.editImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = holder.getAdapterPosition();
-
-                if(holder.editDetails.getVisibility() == View.VISIBLE)  {
-                    Storage.getInstance().editItemDetails(pos, holder.editDetails.getText().toString());
-                    holder.editDetails.setVisibility(View.GONE);
-                    holder.itemDetails.setVisibility(View.VISIBLE);
-                    notifyItemChanged(pos);
-                }   else {
-                    holder.itemDetails.setVisibility(View.GONE);
-                    holder.editDetails.setVisibility(View.VISIBLE);
-                }
-
-            }
-        });
     }
 
     @Override

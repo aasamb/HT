@@ -26,8 +26,8 @@ public class ListLutemonsActivity extends AppCompatActivity {
         battleField = BattleField.getInstance();
 
         recyclerView = findViewById(R.id.rvAllLutemons);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ItemListAdapter(getApplicationContext(), storage.getItems());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ItemListAdapter(getApplicationContext(), home.getLutemons(), trainingArea.getLutemons(), battleField.getLutemons());
         recyclerView.setAdapter(adapter);
     }
 }

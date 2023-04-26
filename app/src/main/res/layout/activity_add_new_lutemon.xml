@@ -96,8 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/kirby"
-                    app:srcCompat="@drawable/kirby" />
+                    android:src="@drawable/kirby" />
 
                 <RadioButton
                     android:id="@+id/rbKirbyImg"
@@ -119,8 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/link"
-                    app:srcCompat="@drawable/link" />
+                    android:src="@drawable/link" />
 
                 <RadioButton
                     android:id="@+id/rbLinkImg"
@@ -142,8 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/luigi"
-                    app:srcCompat="@drawable/luigi" />
+                    android:src="@drawable/luigi" />
 
                 <RadioButton
                     android:id="@+id/rbLuigiImg"
@@ -165,8 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/luigi"
-                    app:srcCompat="@drawable/mario" />
+                    android:src="@drawable/mario" />
 
                 <RadioButton
                     android:id="@+id/rbMarioImg"

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder {
-    TextView name, type, attackTitle, attackValue, defenseTitle, defenseValue, healthTitle, healthValue, expTitle, expValue, location;
+    TextView name, type, attackTitle, attackValue, defenseTitle, defenseValue, healthTitle, healthValue, expTitle, expValue, location, id;
     ImageView lutemonImg;
 
 
@@ -26,5 +26,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         expValue = itemView.findViewById(R.id.tvExp);
         location = itemView.findViewById(R.id.tvLocation);
         lutemonImg = itemView.findViewById(R.id.ivLutemonImg);
+        id = itemView.findViewById(R.id.tvID);
     }
 }

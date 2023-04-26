@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="switchToAddNewLutemon"
         android:text="Lisää uusi Lutemon"
         android:textAllCaps="false"
         android:textSize="14sp" />
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="switchToListLutemons"
         android:text="Listaa Lutemonit"
         android:textAllCaps="false"
         android:textSize="14sp" />
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="switchToMoveLutemons"
         android:text="Siirrä Lutemoneja"
         android:textAllCaps="false"
         android:textSize="14sp" />
@@ -49,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="switchToBattleFieldActivity"
         android:text="Taisteluareenalle!"
         android:textAllCaps="false"
         android:textSize="14sp" />
@@ -59,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-medium"
+        android:onClick="switchToTrainLutemonsActivity"
         android:text="Treenaa Lutemoneja"
         android:textAllCaps="false"
         android:textSize="14sp" />

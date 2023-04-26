@@ -31,18 +31,14 @@ public class MoveToFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        storage = Storage.getInstance();
+        //storage = Storage.getInstance();
 
         View view = inflater.inflate(R.layout.fragment_move_to, container, false);
-
-        starredItems = view.findViewById(R.id.tvStarredItems);
-
-        starredItems.setText(storage.getStarredString());
 
         return view;
     }
 
     public void updateStarred() {
-        starredItems.setText(storage.getStarredString());
+        //starredItems.setText(storage.getStarredString());
     }
 }

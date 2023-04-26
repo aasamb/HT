@@ -20,11 +20,6 @@ import com.example.HT.TrainingArea;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
 
     private Storage home, trainingArea, battleField;
@@ -48,10 +43,12 @@ public class HomeFragment extends Fragment {
         trainingArea = TrainingArea.getInstance();
         battleField = BattleField.getInstance();
 
+/*
         recyclerView = view.findViewById(R.id.rvAllLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ItemListAdapter(getContext().getApplicationContext(), storage.getItems());
+        adapter = new ItemListAdapter(getContext().getApplicationContext(), home.getLutemons());
         recyclerView.setAdapter(adapter);
+*/
 
 
 
