@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void switchTo(View view)  {
+    public void switchToTrainLutemonsActivity(View view)  {
         Intent intent = new Intent(this, TrainLutemonsActivity.class);
         startActivity(intent);
     }
