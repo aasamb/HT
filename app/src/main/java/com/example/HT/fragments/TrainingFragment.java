@@ -21,7 +21,7 @@ import com.example.HT.TrainingArea;
 import java.util.ArrayList;
 
 
-public class ListFragment extends Fragment {
+public class TrainingFragment extends Fragment {
 
     private Storage home, trainingArea, battleField;
 
@@ -50,7 +50,7 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_training, container, false);
 
         home = Home.getInstance();
         trainingArea = TrainingArea.getInstance();

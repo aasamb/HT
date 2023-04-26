@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.HT.R;
 import com.example.HT.Storage;
 
-public class StarredFragment extends Fragment {
+public class MoveToFragment extends Fragment {
 
     Storage storage;
     TextView starredItems;
@@ -33,7 +33,7 @@ public class StarredFragment extends Fragment {
 
         storage = Storage.getInstance();
 
-        View view = inflater.inflate(R.layout.fragment_starred, container, false);
+        View view = inflater.inflate(R.layout.fragment_move_to, container, false);
 
         starredItems = view.findViewById(R.id.tvStarredItems);
 
