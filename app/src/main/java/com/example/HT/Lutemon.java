@@ -1,5 +1,7 @@
 package com.example.HT;
 
+import android.widget.Toast;
+
 public abstract class Lutemon {
     private static int idCounter = 0;
     protected String name, color;
@@ -14,7 +16,7 @@ public abstract class Lutemon {
     }
 
     public String getType() {
-        return this.toString();
+        return this.getClass().getSimpleName();
     }
 
     public static int getNumberOfCreatedLutemons() {

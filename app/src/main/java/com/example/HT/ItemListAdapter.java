@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     private Context context;
     private ArrayList<Lutemon> lutemons = new ArrayList<>();
-    private HashMap<Integer, Lutemon> lutemonsAtHome, lutemonsAtTraining, lutemonsAtBattleField, lutemonsMap;
+    private HashMap<Integer, Lutemon> lutemonsAtHome, lutemonsAtTraining, lutemonsAtBattleField, lutemonsMap = new HashMap<>();
     private String locationString;
 
     public ItemListAdapter(Context context, HashMap<Integer, Lutemon> lutemonsAtHome, HashMap<Integer, Lutemon> lutemonsAtTraining, HashMap<Integer, Lutemon> lutemonsAtBattleField) {
@@ -22,9 +22,13 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         this.lutemonsAtHome = lutemonsAtHome;
         this.lutemonsAtBattleField = lutemonsAtBattleField;
         this.lutemonsAtTraining = lutemonsAtTraining;
-        this.lutemonsMap.putAll(lutemonsAtHome);
-        this.lutemonsMap.putAll(lutemonsAtTraining);
-        this.lutemonsMap.putAll(lutemonsAtBattleField);
+        System.out.println("lutemonsMap null: " + String.valueOf(lutemonsMap == null));
+        System.out.println("lutemonsAtHome null: " + String.valueOf(lutemonsAtHome == null));
+        System.out.println("lutemonsAtTraining null: " + String.valueOf(lutemonsAtTraining == null));
+        System.out.println("lutemonsAtBattleField null: " + String.valueOf(lutemonsAtBattleField == null));
+        this.lutemonsMap.putAll(this.lutemonsAtHome);
+        this.lutemonsMap.putAll(this.lutemonsAtTraining);
+        this.lutemonsMap.putAll(this.lutemonsAtBattleField);
         this.lutemons.addAll(lutemonsMap.values());
         System.out.println("Erillisten HashMappien koko: " + lutemonsAtBattleField.size() + lutemonsAtTraining.size() + lutemonsAtTraining.size());
         System.out.println("Yhteislistan koko: " + lutemons.size());

@@ -17,7 +17,7 @@ public class MoveLutemonsActivity extends AppCompatActivity {
 
 
 
-        storage = Storage.getInstance();
+        //storage = Storage.getInstance();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.starredFrame, new MoveToFragment())

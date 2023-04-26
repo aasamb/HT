@@ -9,7 +9,9 @@ import android.os.Bundle;
 public class ListLutemonsActivity extends AppCompatActivity {
 
 
-    private Storage home, battleField, trainingArea;
+    private Home home;
+    private BattleField battleField;
+    private TrainingArea trainingArea;
     private RecyclerView recyclerView;
     private ItemListAdapter adapter;
     private RecyclerView.ViewHolder holder;

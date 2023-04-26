@@ -13,5 +13,6 @@ public class Home extends Storage {
 
     public void createLutemon(Lutemon lutemon)  {
         lutemons.put(lutemon.getId(), lutemon);
+        lutemons.forEach((key, value) -> System.out.println(key + ": " + value.getName() + " (" + value.getType() + ")"));
     }
 }
