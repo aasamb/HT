@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".fragments.TrainingFragment">
+    tools:context=".TrainingFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAllLutemons"
+        android:id="@+id/rvLutemonsTraining"
         android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"

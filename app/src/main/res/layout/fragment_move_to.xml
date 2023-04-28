@@ -2,38 +2,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#B388FF"
-    tools:context=".fragments.MoveToFragment">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="30dp"
+    tools:context=".MoveToFragment">
 
-    <TextView
-        android:id="@+id/tvStarredTitle"
+    <RadioGroup
+        android:id="@+id/rgWhere"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="3dp"
-        android:text="Move to"
-        android:textColor="@color/black"
-        android:textSize="20sp">
+        android:layout_marginBottom="20dp">
 
-    </TextView>
+        <RadioButton
+            android:id="@+id/rbToHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kotiin" />
 
-    <TextView
-        android:id="@+id/tvStarredItems"
+        <RadioButton
+            android:id="@+id/rbToTraining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treenaamaan" />
+
+        <RadioButton
+            android:id="@+id/rbToBattling"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Taisteluareenalle" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnMoveLutemons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvStarredTitle"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="3dp"
-        android:textColor="@color/black"
-        android:textSize="20sp">
-
-    </TextView>
-
+        android:layout_below="@id/rgWhere"
+        android:text="Button" />
 </RelativeLayout>

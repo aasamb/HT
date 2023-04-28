@@ -7,12 +7,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemViewHolder extends RecyclerView.ViewHolder {
+public class LutemonViewHolder extends RecyclerView.ViewHolder {
     TextView name, type, attackTitle, attackValue, defenseTitle, defenseValue, healthTitle, healthValue, expTitle, expValue, location, id;
     ImageView lutemonImg;
 
 
-    public ItemViewHolder(@NonNull View itemView) {
+    public LutemonViewHolder(@NonNull View itemView) {
         super(itemView);
         name = itemView.findViewById(R.id.tvLutemonName);
         type = itemView.findViewById(R.id.tvLutemonType);

@@ -5,6 +5,7 @@ import android.widget.Toast;
 public abstract class Lutemon {
     private static int idCounter = 0;
     protected String name, color;
+    protected Location location = Location.HOME;
     protected int attack, defense, experience = 0, maxHealth, health = maxHealth, id, wins = 0, defeats = 0, image;
 
     public Lutemon(String name, int attack, int defense, int maxHealth) {

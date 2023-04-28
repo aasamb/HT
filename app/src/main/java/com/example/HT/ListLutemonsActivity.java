@@ -13,7 +13,7 @@ public class ListLutemonsActivity extends AppCompatActivity {
     private BattleField battleField;
     private TrainingArea trainingArea;
     private RecyclerView recyclerView;
-    private ItemListAdapter adapter;
+    private LutemonListAdapter adapter;
     private RecyclerView.ViewHolder holder;
 
 
@@ -27,9 +27,14 @@ public class ListLutemonsActivity extends AppCompatActivity {
         trainingArea = TrainingArea.getInstance();
         battleField = BattleField.getInstance();
 
-        recyclerView = findViewById(R.id.rvAllLutemons);
+        recyclerView = findViewById(R.id.rvLutemonsTraining);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ItemListAdapter(getApplicationContext(), home.getLutemons(), trainingArea.getLutemons(), battleField.getLutemons());
+        adapter = new LutemonListAdapter(getApplicationContext(), home.getLutemons(), trainingArea.getLutemons(), battleField.getLutemons());
         recyclerView.setAdapter(adapter);
+/*
+        System.out.println("lutemonsAtHome ListLutemonsActivityssa: (home = null: " + (home == null) + ")");
+        home.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+*/
+
     }
 }

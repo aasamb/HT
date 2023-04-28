@@ -1,4 +1,4 @@
-package com.example.HT.fragments;
+package com.example.HT;
 
 import android.os.Bundle;
 
@@ -10,29 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.HT.BattleField;
-import com.example.HT.Home;
-import com.example.HT.ItemListAdapter;
-import com.example.HT.Lutemon;
-import com.example.HT.R;
-import com.example.HT.Storage;
-import com.example.HT.TrainingArea;
-
 import java.util.ArrayList;
 
 
 public class TrainingFragment extends Fragment {
 
-    private Storage home, trainingArea, battleField;
+    private TrainingArea trainingArea;
 
     private RecyclerView recyclerView;
-    private ItemListAdapter adapter;
+    private LutemonFragmentListAdapter adapter;
     private ArrayList<Lutemon> lutemonsArrayList;
 
 
 /*
     private RecyclerView recyclerView;
-    private ItemListAdapter adapter;
+    private LutemonFragmentListAdapter adapter;
     private RecyclerView.ViewHolder holder;
 */
 
@@ -41,9 +33,6 @@ public class TrainingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-
-
-
     }
 
     @Override
@@ -52,20 +41,12 @@ public class TrainingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_training, container, false);
 
-        home = Home.getInstance();
         trainingArea = TrainingArea.getInstance();
-        battleField = BattleField.getInstance();
 
-/*
-        recyclerView = view.findViewById(R.id.rvAllLutemons);
+        recyclerView = view.findViewById(R.id.rvLutemonsTraining);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ItemListAdapter(getContext().getApplicationContext(), home.getLutemons());
+        adapter = new LutemonFragmentListAdapter(getContext().getApplicationContext(), trainingArea.getLutemons());
         recyclerView.setAdapter(adapter);
-*/
-
-
-
-
 
         return view;
     }

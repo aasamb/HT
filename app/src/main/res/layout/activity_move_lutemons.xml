@@ -43,16 +43,48 @@
 
     </androidx.viewpager2.widget.ViewPager2>
 
-    <FrameLayout
-        android:id="@+id/starredFrame"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="250dp"
-        android:layout_below="@+id/fragmentArea"
-        android:layout_marginBottom="20dp"
-        >
+        android:minHeight="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        tools:context=".MoveToFragment">
 
-    </FrameLayout>
+        <RadioGroup
+            android:id="@+id/rgWhere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <RadioButton
+                android:id="@+id/rbToHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kotiin" />
+
+            <RadioButton
+                android:id="@+id/rbToTraining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Treenaamaan" />
+
+            <RadioButton
+                android:id="@+id/rbToBattling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Taisteluareenalle" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnMoveLutemons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rgWhere"
+            android:text="Button" />
+    </RelativeLayout>
 
     <!--<TextView
         android:layout_width="match_parent"

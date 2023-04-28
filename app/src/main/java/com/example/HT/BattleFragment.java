@@ -1,4 +1,4 @@
-package com.example.HT.fragments;
+package com.example.HT;
 
 import android.os.Bundle;
 
@@ -10,22 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.HT.BattleField;
-import com.example.HT.Home;
-import com.example.HT.ItemListAdapter;
-import com.example.HT.Lutemon;
-import com.example.HT.R;
-import com.example.HT.Storage;
-import com.example.HT.TrainingArea;
-
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class BattleFragment extends Fragment {
 
-    private Storage home, trainingArea, battleField;
+    private BattleField battleField;
+
     private RecyclerView recyclerView;
-    private ItemListAdapter adapter;
+    private LutemonFragmentListAdapter adapter;
     private ArrayList<Lutemon> lutemonsArrayList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,23 +31,20 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_training, container, false);
+        View view = inflater.inflate(R.layout.fragment_battle, container, false);
 
-        home = Home.getInstance();
-        trainingArea = TrainingArea.getInstance();
         battleField = BattleField.getInstance();
 
-/*
-        recyclerView = view.findViewById(R.id.rvAllLutemons);
+        recyclerView = view.findViewById(R.id.rvLutemonsBattling);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ItemListAdapter(getContext().getApplicationContext(), home.getLutemons());
+        adapter = new LutemonFragmentListAdapter(getContext().getApplicationContext(), battleField.getLutemons());
         recyclerView.setAdapter(adapter);
-*/
-
-
-
-
 
         return view;
     }
+
+
+
+
+
 }
