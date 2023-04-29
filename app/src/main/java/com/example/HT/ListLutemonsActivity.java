@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import java.util.HashMap;
+
 public class ListLutemonsActivity extends AppCompatActivity {
 
 
@@ -15,6 +17,7 @@ public class ListLutemonsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LutemonListAdapter adapter;
     private RecyclerView.ViewHolder holder;
+    private HashMap<Integer, Lutemon> lutemonsAtHome, lutemonsAtTraining, lutemonsAtBattleField;
 
 
     @Override
@@ -27,14 +30,24 @@ public class ListLutemonsActivity extends AppCompatActivity {
         trainingArea = TrainingArea.getInstance();
         battleField = BattleField.getInstance();
 
+        lutemonsAtHome = home.getLutemons();
+        lutemonsAtTraining = trainingArea.getLutemons();
+        lutemonsAtBattleField = battleField.getLutemons();
+
+        System.out.println("Sijainnit  ListLutemonsActivityssa: home=null: " + (home == null) + ", trainingArea=null: " + (trainingArea == null) + ", battleField=null: " + (battleField == null));
+        System.out.print("Kotona: ");
+        home.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+        System.out.print("Treenaamassa: ");
+        trainingArea.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+        System.out.print("Tappelussa: ");
+        battleField.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+
+
         recyclerView = findViewById(R.id.rvLutemonsTraining);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LutemonListAdapter(getApplicationContext(), home.getLutemons(), trainingArea.getLutemons(), battleField.getLutemons());
         recyclerView.setAdapter(adapter);
-/*
-        System.out.println("lutemonsAtHome ListLutemonsActivityssa: (home = null: " + (home == null) + ")");
-        home.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-*/
+
 
     }
 }

@@ -2,13 +2,17 @@ package com.example.HT;
 
 public class BattleField extends Storage {
 
-    private static BattleField battleField = null;
+    private static BattleField battleField;
 
     private BattleField() {
+        this.location = Location.BATTLE;
     }
 
     public static BattleField getInstance() {
-        return (battleField == null) ? new BattleField() : battleField;
+        if (battleField == null)   {
+            battleField = new BattleField();
+        }
+        return battleField;
     }
 
     public void fight() {

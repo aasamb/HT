@@ -12,7 +12,6 @@
         android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:foregroundGravity="center_horizontal">
 
     </androidx.recyclerview.widget.RecyclerView>

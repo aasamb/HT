@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFragmentViewHolder> implements ToMoveCheckBoxListener {
+public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFragmentViewHolder> /*implements ToMoveCheckBoxListener*/ {
     private Context context;
     private ArrayList<Lutemon> lutemonsHere = new ArrayList<>();
     private HashMap<Integer, Lutemon> lutemonsHereMap, lutemonsToMove = new HashMap<>();
@@ -22,10 +22,6 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
         this.context = context;
         this.lutemonsHereMap = lutemonsHereMap;
         this.lutemonsHere.addAll(this.lutemonsHereMap.values());
-    }
-
-    public void setCheckBoxListener(ToMoveCheckBoxListener listener)    {
-        this.listener = listener;
     }
 
     @Override
@@ -49,23 +45,47 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
             @Override
             public void onClick(View view) {
                 int pos = holder.getAdapterPosition();
-                System.out.println("position: " + position + "; pos = getAdapterPosition(): " + pos);
-                listener.onCheckboxStateChanged(pos, holder.moveThis.isChecked());
-                System.out.println("Klikattu!");
+                //System.out.println("position: " + position + "; pos = getAdapterPosition(): " + pos);
+                listener.onCheckboxStateChanged(lutemonsHere.get(pos).getId(), holder.moveThis.isChecked());
+                //System.out.println("Klikattu!");
                 if(holder.moveThis.isChecked())    {
                     lutemonsToMove.put(lutemonsHere.get(pos).getId(), lutemonsHere.get(pos));
-                    lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+                    //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
                 }   else {
                     lutemonsToMove.remove(lutemonsHere.get(pos).getId(), lutemonsHere.get(pos));
-                    lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
+                    //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
                 }
             }
         });
     }
 
     @Override
+    public void onViewAttachedToWindow(@NonNull LutemonFragmentViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        //notifyDataSetChanged();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull LutemonFragmentViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        System.out.println("RecyclerView " + ((lutemonsHere.size() != 0) ? lutemonsHere.get(0).getLocation() : null) + ": onViewDetachedFromWindow()");
+        //notifyDataSetChanged();
+    }
+
+    /*
+    @Override
     public void onCheckboxStateChanged(int position, boolean isChecked) {
 
+    }
+*/
+
+    public ArrayList<Lutemon> getLutemonsHere() {
+        return lutemonsHere;
+    }
+
+    public void update(HashMap<Integer, Lutemon> newLutemons)   {
+        this.lutemonsHere = new ArrayList<>(newLutemons.values());
+        notifyDataSetChanged();
     }
 
     @Override

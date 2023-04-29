@@ -1,19 +1,47 @@
 package com.example.HT;
 
-import android.widget.Toast;
-
 public abstract class Lutemon {
     private static int idCounter = 0;
-    protected String name, color;
+    protected String name, colorType;
     protected Location location = Location.HOME;
-    protected int attack, defense, experience = 0, maxHealth, health = maxHealth, id, wins = 0, defeats = 0, image;
+    protected int attack, defense, experience = 0, maxHealth, health, id, wins = 0, defeats = 0, image = 0;
 
-    public Lutemon(String name, int attack, int defense, int maxHealth) {
+    public Lutemon(String name, int image, int attack, int defense, int maxHealth) {
         this.name = name;
+        this.image = image;
         this.attack = attack;
         this.defense = defense;
         this.maxHealth = maxHealth;
+        this.health = maxHealth;
         this.id = idCounter++;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setDefeats(int defeats) {
+        this.defeats = defeats;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public int getImage() {
+        return image;
     }
 
     public String getType() {
@@ -24,8 +52,8 @@ public abstract class Lutemon {
         return idCounter;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorType() {
+        return colorType;
     }
 
     public int getAttack() {

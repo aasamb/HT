@@ -13,8 +13,9 @@ import java.util.HashMap;
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
     private Context context;
     private ArrayList<Lutemon> lutemons = new ArrayList<>();
-    private HashMap<Integer, Lutemon> lutemonsAtHome, lutemonsAtTraining, lutemonsAtBattleField, lutemonsMap = new HashMap<>();
+    private HashMap<Integer, Lutemon> lutemonsAtHome = new HashMap<>(), lutemonsAtTraining = new HashMap<>(), lutemonsAtBattleField = new HashMap<>(), lutemonsMap = new HashMap<>();
     private String locationString;
+    private Location location;
 
     public LutemonListAdapter(Context context, HashMap<Integer, Lutemon> lutemonsAtHome, HashMap<Integer, Lutemon> lutemonsAtTraining, HashMap<Integer, Lutemon> lutemonsAtBattleField) {
         this.context = context;
@@ -27,6 +28,8 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         this.lutemonsMap.putAll(this.lutemonsAtTraining);
         this.lutemonsMap.putAll(this.lutemonsAtBattleField);
         this.lutemons.addAll(lutemonsMap.values());
+
+
 /*
         System.out.println("lutemonsMap ItemListAdapterissa: ");
         lutemonsMap.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
@@ -34,7 +37,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         lutemonsAtHome.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
         System.out.println("lutemons ItemListAdapterissa: ");
         lutemons.forEach(lutemon -> System.out.println(lutemon.getName()));
-        System.out.println("Erillisten HashMappien koko: " + (lutemonsAtHome.size() + lutemonsAtTraining.size() + lutemonsAtBattleField.size()));
+        System.out.println("kotona: " + lutemonsAtHome.size() + ", treenaamassa: " + lutemonsAtTraining.size() + ", taistelussa: " + lutemonsAtBattleField.size());
         System.out.println("Yhteislistan koko: " + lutemons.size());
 */
     }
@@ -58,7 +61,25 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.healthValue.setText(lutemons.get(position).getHealth() + "/" + lutemons.get(position).getMaxHealth());
         holder.expValue.setText(String.valueOf(lutemons.get(position).getExperience()));
         holder.id.setText("ID: " + (lutemons.get(position).getId()));
+        holder.lutemonImg.setImageResource(lutemons.get(position).getImage());
+        location = lutemons.get(position).getLocation();
+        switch (location)   {
+            case HOME:
+                locationString = "Kotona";
+                break;
+            case TRAINING:
+                locationString = "Treenaamassa";
+                break;
+            case BATTLE:
+                locationString = "Taistelemassa";
+                break;
+            default:
+                locationString = "Ei tietoa";
+                break;
 
+        }
+
+/*
         if(lutemonsAtTraining.containsValue(lutemons.get(position)))    {
             locationString = "Treenaamassa";
         } else if (lutemonsAtHome.containsValue(lutemons.get(position))) {
@@ -68,6 +89,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         }   else {
             locationString = "Ei tietoa";
         }
+*/
         holder.location.setText(locationString);
 
 

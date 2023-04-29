@@ -24,26 +24,29 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="5dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
             android:orientation="vertical">
 
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvLutemonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="5dp"
+                    android:maxWidth="84dp"
                     android:text="Nimi"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -53,21 +56,28 @@
                     android:id="@+id/tvLutemonType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginBottom="5dp"
                     android:text="(Tyyppi)"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/tvLocation"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_gravity="fill|end"
                     android:gravity="end"
-                    android:text="TextView"
+                    android:maxLines="1"
+                    android:text="Treenaamassa"
                     android:textSize="15sp" />
-            </TableRow>
+            </LinearLayout>
 
             <TableRow
                 android:layout_width="match_parent"
