@@ -1,7 +1,5 @@
 package com.example.HT;
 
-import android.widget.Switch;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -10,15 +8,15 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.HashMap;
 
-public class TabPagerAdapter extends FragmentStateAdapter {
+public class TabPagerAdapter extends FragmentStateAdapter implements UpdateRecyclerViewInFragment {
 
     private final Home home = Home.getInstance();
     private final TrainingArea trainingArea = TrainingArea.getInstance();
     private final BattleField battleField = BattleField.getInstance();
     private HashMap<Integer, Lutemon> lutemonHashMap;
     private int position;
-    private final LocationListFragment homeFragment, trainingFragment, battlefieldFragment;
-    private LocationListFragment fragment;
+    private LocationListFragment homeFragment, trainingFragment, battlefieldFragment, listFragment;
+    //private LocationListFragment fragment;
 
     public TabPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -26,7 +24,6 @@ public class TabPagerAdapter extends FragmentStateAdapter {
         homeFragment = new LocationListFragment(home.getLutemons());
         trainingFragment = new LocationListFragment(trainingArea.getLutemons());
         battlefieldFragment = new LocationListFragment(battleField.getLutemons());
-
     }
 
     @NonNull
@@ -35,14 +32,19 @@ public class TabPagerAdapter extends FragmentStateAdapter {
         this.position = position;
         switch (position)   {
             case 0:
-                return homeFragment;
+                listFragment = new LocationListFragment(home.getLutemons());
+                break;
             case 1:
-                return trainingFragment;
+                listFragment = new LocationListFragment(trainingArea.getLutemons());
+                break;
             case 2:
-                return battlefieldFragment;
+                listFragment = new LocationListFragment(battleField.getLutemons());
+                break;
             default:
-                return homeFragment;
+                listFragment = new LocationListFragment(home.getLutemons());
+                break;
         }
+        return  listFragment;
     }
 
     @Override
@@ -51,9 +53,12 @@ public class TabPagerAdapter extends FragmentStateAdapter {
     }
 
 
+/*
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+        */
+/*
         System.out.println("TabPagerAdapter: onAttachedToRecyclerView()");
         switch (position)   {
             case 0:
@@ -73,6 +78,7 @@ public class TabPagerAdapter extends FragmentStateAdapter {
                 System.out.println("TabPagerAdapter " + ((lutemonHashMap.size() != 0) ? lutemonHashMap.get(0).getLocation() : null) + ": onAttachedToRecyclerView()");
                 break;
         }
+*//*
 
     }
 
@@ -80,6 +86,7 @@ public class TabPagerAdapter extends FragmentStateAdapter {
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onDetachedFromRecyclerView(recyclerView);
     }
+*/
 
     public void notifyLutemonsMoved(int id, Location location, boolean added)  {
         System.out.println("TabPagerAdapter.notifyLutemonsMoved()");
@@ -110,6 +117,14 @@ public class TabPagerAdapter extends FragmentStateAdapter {
                 System.out.println("Sijainnin kanssa epäselvyyksiä");
                 break;
         }
+    }
+
+    @Override
+    public void updateToFragment(String fragmentTag) {
+        if (this.listFragment != null && fragmentTag.equals(LocationListFragment.TAG)) {
+            this.listFragment.receiveUpdate();
+        }
+
     }
 
 /*

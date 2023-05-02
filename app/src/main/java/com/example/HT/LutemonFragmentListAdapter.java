@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFragmentViewHolder> /*implements ToMoveCheckBoxListener*/ {
+public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFragmentViewHolder> {
     private Context context;
     private ArrayList<Lutemon> lutemonsHere = new ArrayList<>();
     private HashMap<Integer, Lutemon> lutemonsHereMap, lutemonsToMove = new HashMap<>();
-    private ToMoveCheckBoxListener listener;
+    private RecyclerViewCheckBoxListener listener;
 
 
     public LutemonFragmentListAdapter(Context context, HashMap<Integer, Lutemon> lutemonsHereMap) {
@@ -27,7 +27,7 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        //listener = (ToMoveCheckBoxListener) context;
+        //listener = (RecyclerViewCheckBoxListener) context;
     }
 
     @NonNull
@@ -59,6 +59,7 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
         });
     }
 
+/*
     @Override
     public void onViewAttachedToWindow(@NonNull LutemonFragmentViewHolder holder) {
         super.onViewAttachedToWindow(holder);
@@ -71,6 +72,7 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
         System.out.println("RecyclerView " + ((lutemonsHere.size() != 0) ? lutemonsHere.get(0).getLocation() : null) + ": onViewDetachedFromWindow()");
         //notifyDataSetChanged();
     }
+*/
 
     /*
     @Override
@@ -93,11 +95,13 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
         return lutemonsHere.size();
     }
 
+/*
     public HashMap<Integer, Lutemon> getLutemonsToMove()    {
         return lutemonsToMove;
     }
+*/
 
-    public void setCheckboxListener(ToMoveCheckBoxListener listener) {
+    public void setCheckboxListener(RecyclerViewCheckBoxListener listener) {
         this.listener = listener;
     }
 

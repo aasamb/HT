@@ -9,7 +9,7 @@
     tools:context=".MoveToFragment">
 
     <RadioGroup
-        android:id="@+id/rgWhere"
+        android:id="@+id/rgWhereTo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp">
@@ -37,6 +37,6 @@
         android:id="@+id/btnMoveLutemons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rgWhere"
+        android:layout_below="@id/rgWhereTo"
         android:text="Button" />
 </RelativeLayout>

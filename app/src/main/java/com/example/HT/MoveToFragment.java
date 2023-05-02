@@ -48,7 +48,7 @@ public class MoveToFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_move_to, container, false);
 
-        destination = view.findViewById(R.id.rgWhere);
+        destination = view.findViewById(R.id.rgWhereTo);
         btnMoveLutemons = view.findViewById(R.id.btnMoveLutemons);
 /*
         btnMoveLutemons.setOnClickListener(new View.OnClickListener() {

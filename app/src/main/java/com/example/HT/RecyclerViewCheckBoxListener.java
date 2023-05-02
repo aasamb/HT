@@ -1,5 +1,5 @@
 package com.example.HT;
 
-public interface ToMoveCheckBoxListener {
+public interface RecyclerViewCheckBoxListener {
     void onCheckboxStateChanged(int position, boolean isChecked);
 }
