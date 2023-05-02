@@ -21,7 +21,6 @@ public class AddNewLutemonActivity extends AppCompatActivity {
         home = Home.getInstance();
         name = findViewById(R.id.etLutemonName);
         rgLutemonType = findViewById(R.id.rgLutemonType);
-        //rgImage = findViewById(R.id.rgImages);
     }
 
 
@@ -30,38 +29,9 @@ public class AddNewLutemonActivity extends AppCompatActivity {
         int image;
         Lutemon lutemon = null;
 
+        // Check if there's a name given.
         if (!name.getText().toString().isEmpty()) {
-
-/*
-            switch (rgImage.getCheckedRadioButtonId())  {
-                case (R.id.rbNoImg):
-                    image = 0;
-                    break;
-                case (R.id.rbKirbyImg):
-                    image = R.drawable.kirby;
-                    break;
-                case (R.id.rbLinkImg):
-                    image = R.drawable.link;
-                    break;
-                case (R.id.rbLuigiImg):
-                    image = R.drawable.luigi;
-                    break;
-                case (R.id.rbMarioImg):
-                    image = R.drawable.mario;
-                    break;
-                default:
-                    Toast.makeText(this, "Valitse kuva!", Toast.LENGTH_SHORT).show();
-                    break;
-            }
-*/
-
-            //if (/*(rgLutemonType.getCheckedRadioButtonId() != -1) &&*/ (rgImage.getCheckedRadioButtonId() != -1)) {}
             switch (rgLutemonType.getCheckedRadioButtonId()) {
-/*
-                    case (R.id.rbWhite):
-                        lutemon = new White(name.getText().toString(), image);
-                        break;
-*/
                 case (R.id.rbGreen):
                     image = R.drawable.luigi;
                     lutemon = new Green(name.getText().toString(), image);
@@ -79,22 +49,26 @@ public class AddNewLutemonActivity extends AppCompatActivity {
                     lutemon = new Red(name.getText().toString(), image);
                     break;
                 default:
+                    // If not type chosen. Or something unexpected.
                     Toast.makeText(this, "Valitse Lutemonin tyyppi!", Toast.LENGTH_SHORT).show();
                     break;
             }
 
         } else {
+            // Reminding user. No Lutemon creation.
             Toast.makeText(this, "Anna Lutemonille nimi!", Toast.LENGTH_SHORT).show();
-            System.out.println("Ei nimeä.");
+            //System.out.println("Ei nimeä.");
         }
 
+        // If there's a Lutemon created.
         if (lutemon != null) {
             home.createLutemon(lutemon);
             String print = "Activity: " + lutemon.getClass().getSimpleName() + "-Lutemon " + lutemon.getName() + " luotu!";
-            System.out.println(print);
+            //System.out.println(print);
             Toast.makeText(this, print, Toast.LENGTH_SHORT).show();
         } else {
-            System.out.println("Lutemonia ei luotu.");
+            // Otherwise only reminding user.
+            //System.out.println("Lutemonia ei luotu.");
             Toast.makeText(this, "Lutemonia ei luotu.", Toast.LENGTH_SHORT).show();
         }
 

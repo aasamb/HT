@@ -44,7 +44,11 @@ public class TrainingArea extends Storage {
                 trained = lutemon.improveDefense((Math.pow(factor, 2) * 0.8));
             }
             // Let's make the print for this Lutemon
-            String printLine = lutemon.getId() + ": " + lutemon.getNameAndType() + ";  Attack: " + lutemon.getAttack() + ";  Defense: " + lutemon.getDefense() + "; Days trained: " + lutemon.getTrainingDays() + "." + (trained ? "" : "\n" + lutemon.getId() + ": (" + lutemon.getType() + ") Treenipäiviä ei ole käytettävissä enää!");
+            String printLine = lutemon.getId() + ": " + lutemon.getNameAndType() +
+                    ";  Attack: " + lutemon.getAttack() + ";  Defense: " + lutemon.getDefense() +
+                    "; Days trained: " + lutemon.getTrainingDays() + "." +
+                    (trained ? "" : "\n" + lutemon.getId() + ": (" + lutemon.getType()
+                            + ") Treenipäiviä ei ole käytettävissä enää!");
             results.add(printLine);
 
         }

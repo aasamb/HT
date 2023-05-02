@@ -15,15 +15,15 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.HashMap;
 
 public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerViewCheckBoxListener, UpdateRecyclerViewInFragment {
+    // Activity to move Lutemons into home, training of battlefield.
+    // Real-time updating of the RecyclerView according to the actual movements of the Lutemons
+    // does not work. Updating RecyclerViews requires restarting the activity.
 
     private Home home;
     private TrainingArea trainingArea;
     private BattleField battleField;
-    private MoveToFragment moveToFragment;
     private RadioGroup rgDestination;
-    private Button btnMoveLutemons;
     private HashMap<Integer, Lutemon> lutemonsToMove, lutemonsHashMap = new HashMap<>();
-    private LutemonFragmentListAdapter listAdapter;
     private ViewPager2 viewPager2;
     private TabPagerAdapter tabPagerAdapter;
     private UpdateRecyclerViewInFragment updateRecyclerView;
@@ -35,6 +35,7 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
         lutemonsToMove = new HashMap<>();
         lutemonsHashMap = new HashMap<>();
 
+        // Implementation of the interface for RecyclerView real-time update. Doesn't work.
         this.updateRecyclerView = (UpdateRecyclerViewInFragment) this;
 
         home = Home.getInstance();
@@ -45,7 +46,7 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
         lutemonsHashMap.putAll(trainingArea.getLutemons());
         lutemonsHashMap.putAll(battleField.getLutemons());
 
-        btnMoveLutemons = findViewById(R.id.btnMoveLutemons);
+        Button btnMoveLutemons = findViewById(R.id.btnMoveLutemons);
         rgDestination = findViewById(R.id.rgWhereTo);
 
         TabLayout tabLayout = findViewById(R.id.tabArea);
@@ -58,7 +59,6 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager2.setCurrentItem(tab.getPosition());
                 //fragmentArea.getAdapter().notifyDataSetChanged();
-                //System.out.println("onTabSelected");
             }
 
             @Override
@@ -68,7 +68,6 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 //fragmentArea.getAdapter().notifyDataSetChanged();
-                //System.out.println("onTabReselected");
             }
         });
 
@@ -88,23 +87,19 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
         //destination = findViewById(R.id.moveLutemonsFrame).findViewById(R.id.rgWhere);
         //destination = moveToFragment.getActivity().findViewById(R.id.rgWhere);
 
-        //getSupportFragmentManager().tag;
         btnMoveLutemons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Storage destinationClass;
-                //System.out.println("Activityssä: onClickListener");
-                //System.out.println("Siirrettävät lutemonit:");
-                //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-
-
-                String tagFrom = null; // = "android:switcher:" + fragmentArea.getId() + ":" + 0;
-                String tagTo;  // = "android:switcher:" + fragmentArea.getId() + ":" + 0;
+                String tagFrom = null;
+                String tagTo;
                 //LocationListFragment listFragment = (LocationListFragment) tabPagerAdapter.getItem(0);
 
-                //System.out.println("RadioGroup destination: " + destination);
 
+                // If sentence to check if all the needed things are done before starting to move
+                // any Lutemons.
                 if ((rgDestination.getCheckedRadioButtonId() != -1) && (!lutemonsToMove.isEmpty()))   {
+                    // Switch-case to determine the destination.
                     switch  (rgDestination.getCheckedRadioButtonId()) {
                         case (R.id.rbToHome):
                             destinationClass = home;
@@ -124,17 +119,13 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
                             break;
                     }
 
+                    // Moving the selected Lutemons into the selected location.
                     for (int key : lutemonsToMove.keySet()) {
-/*
-                    Integer key = entry.getKey();
-                    Lutemon value = entry.getValue();
-*/
                         Location locationFrom = lutemonsHashMap.get(key).getLocation();
                         switch (locationFrom) {
                             case HOME:
                                 tagFrom = "android:switcher:" + viewPager2.getId() + ":" + 0;
                                 destinationClass.addLutemon(home.takeLutemonAway(key));
-                                System.out.println("MoveLutemonsActivity -> notifyLutemonsMoved: HOME");
                                 //getSupportFragmentManager().findFragmentById(R.id.fragmentArea).
                                 //getSupportFragmentManager().findFragmentById(R.id.locationFrame).
                                 //tabPagerAdapter.notifyLutemonsMoved(key, location, false);
@@ -159,12 +150,11 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
                                 System.out.println("Virhe Lutemonin siirtämisessä");
                                 break;
                         }
-/*
-                    if (lutemonsHashMap.containsKey(key))   {
-                    }
-*/
                     }
 
+                    // Attempt to find the Fragments with tag and RecyclerViews and to call
+                    // notifyDataSetChanged() methdod in the Adapter of the RecyclerView.
+                    // Not working, commented out.
 /*
                     System.out.println("MoveLutemonsActivity: tagFrom = " + tagFrom);
                     tagFrom = "move_fragment_tag";
@@ -179,6 +169,7 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
                     TabPagerAdapter adapter = (TabPagerAdapter) viewPager2.getAdapter();
                     adapter.notifyDataSetChanged();
 */
+                    // Attempt to update RecyclerView real-time. Doesn't work.
                     MoveLutemonsActivity.this.updateRecyclerView.updateToFragment(LocationListFragment.TAG);
                 }   else {
                     System.out.println("Mitään ei siirretty.");
@@ -187,50 +178,9 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        if (viewPager2.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
-            viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1);
-        }
 
-    }
-
-/*
-    public LutemonFragmentListAdapter getListAdapter()  {
-        System.out.println("tabPagerAdapter: " + tabPagerAdapter);
-        tabPagerAdapter = new TabPagerAdapter(this);
-        System.out.println("tabPagerAdapter: " + tabPagerAdapter);
-        return tabPagerAdapter.getAdapter();
-    }
-*/
-
-/*
-    public void moveLutemons(@NonNull View view) {
-        lutemonsToMove = tabPagerAdapter.getAdapter().getLutemonsToMove();
-
-        System.out.println("Siirrettävät lutemonit:");
-        lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-
-        System.out.println("RadioGroup destination: " + destination);
-
-        switch  (destination.getCheckedRadioButtonId()) {
-            case (R.id.rbToHome):
-                break;
-            case (R.id.rbToTraining):
-                break;
-            case (R.id.rbToBattling):
-                break;
-            default:
-                break;
-        }
-    }
-*/
-
+    // Using RecyclerViewCheckBoxListener to update the ArrayList lutemonsToTrain
+    // in real-time every time a check box is clicked.
     @Override
     public void onCheckboxStateChanged(int lutemonId, boolean isChecked) {
         if(isChecked)   {
@@ -238,11 +188,11 @@ public class MoveLutemonsActivity extends AppCompatActivity implements RecyclerV
         }   else {
             lutemonsToMove.remove(lutemonId, lutemonsHashMap.get(lutemonId));
         }
-        System.out.println("MoveLutemonsActivity.onCheckboxStateChanged() lutemonsToMove: " + lutemonsToMove);
         //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-        //MoveToFragment fragment = getSupportFragmentManager().findFragmentById(R.id.);
     }
 
+    // Override method regarding the attempt to update RecyclerView in real-time according to
+    // changes in the actual locations of the Lutemons. Doesn't work.
     @Override
     public void updateToFragment(String fragmentTag) {
         this.tabPagerAdapter.updateToFragment(fragmentTag);

@@ -45,12 +45,16 @@ public class BattleFieldActivity extends AppCompatActivity implements RecyclerVi
 
         rvLutemonsAtBattlefield.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LutemonFragmentListAdapter(getApplicationContext(), lutemonsHere);
+
+        // Using RecyclerViewCheckBoxListener to update the ArrayList lutemonsToTrain
+        // in real-time every time a check box is clicked.
         adapter.setCheckboxListener(new RecyclerViewCheckBoxListener() {
             @Override
             public void onCheckboxStateChanged(int position, boolean isChecked) {
                 listener.onCheckboxStateChanged(position, isChecked);
             }
         });
+
         rvLutemonsAtBattlefield.setAdapter(adapter);
 
 
@@ -113,25 +117,19 @@ public class BattleFieldActivity extends AppCompatActivity implements RecyclerVi
         }   else {
             lutemonsToFight.remove(position, lutemonsHere.get(position));
         }
-        //System.out.println("BattleFieldActivity.onCheckboxStateChanged() lutemonsToMove: " + lutemonsToFight);
-        //lutemonsToFight.forEach((key, value) -> System.out.print(key + ": " + value.getName() + "; "));
-        //MoveToFragment fragment = getSupportFragmentManager().findFragmentById(R.id.);
     }
 
-    public HashMap<Integer, Lutemon> getLutemonsToFight()   {
-        return lutemonsToFight;
-    }
 
+    // Externalizing functionality to update the TextView of action results into
+    // separate method.
     private void makeBattlePrint()  {
-        if (battleText == null || battleText.isEmpty())  {
-            System.out.println("battleText: " + battleText);
-        }   else {
+        // Checking if the list is not empty, or even exists to avoid NullPointerExceptions.
+        if (battleText != null && !battleText.isEmpty())  {
+            // Initializing the TextView.
             tvBattlePrint.setText("");
             battleText.forEach(s -> {
                 tvBattlePrint.append(s + "\n");
             });
         }
     }
-
-
 }

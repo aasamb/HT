@@ -8,16 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Storage storage;
-    private ImageView ivSortAlphabet, ivSortRecent;
+    // MainActivity handles only the swithc to other activities.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void switchToAddNewLutemon(View view)  {
@@ -44,17 +40,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrainLutemonsActivity.class);
         startActivity(intent);
     }
-
-
-/*
-    public void sortAlphabet(View view) {
-        storage.sortAlphabet();
-        adapter.notifyDataSetChanged();
-    }
-
-    public void sortRecent(View view)   {
-        storage.sortRecent();
-        adapter.notifyDataSetChanged();
-    }
-*/
 }

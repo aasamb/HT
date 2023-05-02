@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
+    // Adapter for ListLutemonsActivity to create RecyclerView to show all Lutemons.
+
     private Context context;
     private ArrayList<Lutemon> lutemons = new ArrayList<>();
     private HashMap<Integer, Lutemon> lutemonsAtHome = new HashMap<>(), lutemonsAtTraining = new HashMap<>(), lutemonsAtBattleField = new HashMap<>(), lutemonsMap = new HashMap<>();
@@ -22,24 +24,13 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         this.lutemonsAtHome = lutemonsAtHome;
         this.lutemonsAtBattleField = lutemonsAtBattleField;
         this.lutemonsAtTraining = lutemonsAtTraining;
-        //System.out.println("lutemonsAtTraining null: " + String.valueOf(lutemonsAtTraining == null));
-        //System.out.println("lutemonsAtBattleField null: " + String.valueOf(lutemonsAtBattleField == null));
+        // Converting three HashMaps of Lutemons in three different locations into one HashMap
         this.lutemonsMap.putAll(this.lutemonsAtHome);
         this.lutemonsMap.putAll(this.lutemonsAtTraining);
         this.lutemonsMap.putAll(this.lutemonsAtBattleField);
+        // Converting the big HashMap into ArrayList. This is done in this order to get the
+        // Lutemons in the ArrayList show in the order of IDs/creation.
         this.lutemons.addAll(lutemonsMap.values());
-
-
-/*
-        System.out.println("lutemonsMap ItemListAdapterissa: ");
-        lutemonsMap.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-        System.out.println("lutemonsAtHome ItemListAdapterissa: ");
-        lutemonsAtHome.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
-        System.out.println("lutemons ItemListAdapterissa: ");
-        lutemons.forEach(lutemon -> System.out.println(lutemon.getName()));
-        System.out.println("kotona: " + lutemonsAtHome.size() + ", treenaamassa: " + lutemonsAtTraining.size() + ", taistelussa: " + lutemonsAtBattleField.size());
-        System.out.println("Yhteislistan koko: " + lutemons.size());
-*/
     }
 
     @NonNull
@@ -52,12 +43,6 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
         holder.name.setText(lutemons.get(position).getName());
         holder.type.setText("(" + lutemons.get(position).getType() + ")");
-/*
-        holder.attackTitle.setText("Hyökkäys: ");
-        holder.defenseTitle.setText("Puolustus: ");
-        holder.healthTitle.setText("Elämä: ");
-        holder.expTitle.setText("Kokemus: ");
-*/
         holder.attackValue.setText(String.valueOf(lutemons.get(position).getAttack()));
         holder.wins.setText(String.valueOf(lutemons.get(position).getWins()));
         holder.defenseValue.setText(String.valueOf(lutemons.get(position).getDefense()));
@@ -68,6 +53,8 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.id.setText("ID: " + (lutemons.get(position).getId()));
         holder.lutemonImg.setImageResource(lutemons.get(position).getImage());
         location = lutemons.get(position).getLocation();
+        // Making the String to put into location TextView according to the actual
+        // location variable of the Lutemon in case.
         switch (location)   {
             case HOME:
                 locationString = "Kotona";
@@ -83,21 +70,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                 break;
 
         }
-
-/*
-        if(lutemonsAtTraining.containsValue(lutemons.get(position)))    {
-            locationString = "Treenaamassa";
-        } else if (lutemonsAtHome.containsValue(lutemons.get(position))) {
-            locationString = "Kotona";
-        } else if (lutemonsAtBattleField.containsValue(lutemons.get(position))) {
-            locationString = "Taistelemassa";
-        }   else {
-            locationString = "Ei tietoa";
-        }
-*/
         holder.location.setText(locationString);
-
-
     }
 
     @Override

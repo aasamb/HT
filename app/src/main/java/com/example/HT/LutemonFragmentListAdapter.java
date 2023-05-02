@@ -12,22 +12,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFragmentViewHolder> {
+    // Adapter to use a RecyclerView in several different occasions. Provides a RecyclerView
+    // of Lutemons of a given HashMap with only id, name and type of Lutemons visible
+    // with a checkbox.
+
     private Context context;
     private ArrayList<Lutemon> lutemonsHere = new ArrayList<>();
-    private HashMap<Integer, Lutemon> lutemonsHereMap, lutemonsToMove = new HashMap<>();
+    private HashMap<Integer, Lutemon> lutemonsToMove = new HashMap<>();
     private RecyclerViewCheckBoxListener listener;
 
 
     public LutemonFragmentListAdapter(Context context, HashMap<Integer, Lutemon> lutemonsHereMap) {
         this.context = context;
-        this.lutemonsHereMap = lutemonsHereMap;
-        this.lutemonsHere.addAll(this.lutemonsHereMap.values());
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-        //listener = (RecyclerViewCheckBoxListener) context;
+        this.lutemonsHere.addAll(lutemonsHereMap.values());
     }
 
     @NonNull
@@ -41,53 +38,26 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
 
         holder.moveThis.setText("ID " + lutemonsHere.get(position).getId() + ":  " + lutemonsHere.get(position).getName() + " (" + lutemonsHere.get(position).getClass().getSimpleName() + ")");
 
+
+        // Using OnClickListener in the checkboxes of the RecyclerView to update
+        // the data structure of Lutemons to move into different location in real-time.
         holder.moveThis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int pos = holder.getAdapterPosition();
-                //System.out.println("position: " + position + "; pos = getAdapterPosition(): " + pos);
                 listener.onCheckboxStateChanged(lutemonsHere.get(pos).getId(), holder.moveThis.isChecked());
-                //System.out.println("Klikattu!");
                 if(holder.moveThis.isChecked())    {
                     lutemonsToMove.put(lutemonsHere.get(pos).getId(), lutemonsHere.get(pos));
-                    //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
                 }   else {
                     lutemonsToMove.remove(lutemonsHere.get(pos).getId(), lutemonsHere.get(pos));
-                    //lutemonsToMove.forEach((key, value) -> System.out.println(key + ": " + value.getName()));
                 }
             }
         });
     }
 
-/*
-    @Override
-    public void onViewAttachedToWindow(@NonNull LutemonFragmentViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        //notifyDataSetChanged();
-    }
-
-    @Override
-    public void onViewDetachedFromWindow(@NonNull LutemonFragmentViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-        System.out.println("RecyclerView " + ((lutemonsHere.size() != 0) ? lutemonsHere.get(0).getLocation() : null) + ": onViewDetachedFromWindow()");
-        //notifyDataSetChanged();
-    }
-*/
-
-    /*
-    @Override
-    public void onCheckboxStateChanged(int position, boolean isChecked) {
-
-    }
-*/
 
     public ArrayList<Lutemon> getLutemonsHere() {
         return lutemonsHere;
-    }
-
-    public void update(HashMap<Integer, Lutemon> newLutemons)   {
-        this.lutemonsHere = new ArrayList<>(newLutemons.values());
-        notifyDataSetChanged();
     }
 
     @Override
@@ -95,11 +65,6 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
         return lutemonsHere.size();
     }
 
-/*
-    public HashMap<Integer, Lutemon> getLutemonsToMove()    {
-        return lutemonsToMove;
-    }
-*/
 
     public void setCheckboxListener(RecyclerViewCheckBoxListener listener) {
         this.listener = listener;

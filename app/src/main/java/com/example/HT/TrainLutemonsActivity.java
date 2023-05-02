@@ -87,9 +87,6 @@ public class TrainLutemonsActivity extends AppCompatActivity implements Recycler
         }   else {
             lutemonsToTrain.remove(position, lutemonsHere.get(position));
         }
-        //System.out.println("BattleFieldActivity.onCheckboxStateChanged() lutemonsToMove: " + lutemonsToFight);
-        //lutemonsToFight.forEach((key, value) -> System.out.print(key + ": " + value.getName() + "; "));
-        //MoveToFragment fragment = getSupportFragmentManager().findFragmentById(R.id.);
     }
 
     // Externalizing functionality to update the TextView of action results into

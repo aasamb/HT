@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class BattleField extends Storage {
     private static BattleField battleField;
-    private Home home = Home.getInstance();
     private ArrayList<String> battleResult;
+
+    // Private constructor only, because of Singleton principle.
     private BattleField() {
         this.location = Location.BATTLE;
     }
@@ -39,16 +40,13 @@ public class BattleField extends Storage {
             battleResult.add(defendingLutemon.getStatsPrint());
             battleResult.add(attackingLutemon.getId() + ": " + attackingLutemon.getNameAndType() + " attacks " + defendingLutemon.getId() + ": " + defendingLutemon.getNameAndType());
             defendingLutemon.defense(attackingLutemon);
-/*
-            if (defendingLutemon.getHealth() > 0)   {   // Battle continues.
-            }   else {  // Battle ends. Defending Lutemon is defeated. All the logic regarding stats is handled here.
-            }
-*/
         }
+
         // If defending Lutemon experiences health below zero, we end up here.
         battleResult.add(defendingLutemon.getNameAndType() + " is defeated in a fight.");
+        // Adding result stats to the individual Lutemons' records.
         defendingLutemon.addOneDefeat();
-        defendingLutemon.addOneExperience();
+        defendingLutemon.addOneExperience();    // Defeat is also an experience.
         attackingLutemon.addOneWin();
         attackingLutemon.addOneExperience();
 
@@ -67,13 +65,5 @@ public class BattleField extends Storage {
 
         return battleResult;
     }
-
-/*
-    public String singleFight(Lutemon attackingLutemon, Lutemon defendingLutemon)   {
-        String result = "";
-
-        return result;
-    }
-*/
 }
 
