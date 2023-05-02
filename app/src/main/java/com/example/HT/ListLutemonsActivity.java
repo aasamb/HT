@@ -43,7 +43,7 @@ public class ListLutemonsActivity extends AppCompatActivity {
         battleField.getLutemons().forEach((key, value) -> System.out.println(key + ": " + value.getName()));
 
 
-        recyclerView = findViewById(R.id.rvLutemonsTraining);
+        recyclerView = findViewById(R.id.rvAllLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LutemonListAdapter(getApplicationContext(), home.getLutemons(), trainingArea.getLutemons(), battleField.getLutemons());
         recyclerView.setAdapter(adapter);

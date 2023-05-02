@@ -33,7 +33,7 @@ public class LutemonFragmentListAdapter extends RecyclerView.Adapter<LutemonFrag
     @NonNull
     @Override
     public LutemonFragmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LutemonFragmentViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemons_here_view, parent, false));
+        return new LutemonFragmentViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemon_to_check_view, parent, false));
     }
 
     @Override

@@ -47,17 +47,6 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/btnSwitchToBattleField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-medium"
-        android:onClick="switchToBattleFieldActivity"
-        android:text="Taisteluareenalle!"
-        android:textAllCaps="false"
-        android:textSize="14sp" />
-
-    <Button
         android:id="@+id/btnSwitchToTraining"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,6 +55,17 @@
         android:onClick="switchToTrainLutemonsActivity"
         android:text="Treenaa Lutemoneja"
         android:textAllCaps="false"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnSwitchToBattleField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="switchToBattleFieldActivity"
+        android:text="Taisteluareenalle!"
+        android:textAllCaps="true"
         android:textSize="14sp" />
 
 </LinearLayout>

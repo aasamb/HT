@@ -37,10 +37,15 @@
             android:layout_marginBottom="40dp"
             android:text="Aloita taistelu" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBattleText"
+        <TextView
+            android:id="@+id/tvBattlePrint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4sp"
+            android:singleLine="false"
+            android:text="Viimeisimmän taistelun tuloste tulee tähän."
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

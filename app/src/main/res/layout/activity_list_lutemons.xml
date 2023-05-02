@@ -8,7 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLutemonsTraining"
+        android:id="@+id/rvAllLutemons"
         android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"

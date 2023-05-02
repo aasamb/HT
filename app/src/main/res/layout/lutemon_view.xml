@@ -19,13 +19,27 @@
         android:gravity="center_horizontal|top"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/ivLutemonImg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="5dp"
-            tools:srcCompat="@tools:sample/avatars" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp">
+
+            <ImageView
+                android:id="@+id/ivLutemonImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="start|center_vertical"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="ID: 00"
+                android:textSize="15sp" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +63,7 @@
                     android:maxWidth="84dp"
                     android:text="Nimi"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +74,7 @@
                     android:layout_marginBottom="5dp"
                     android:text="(Tyyppi)"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <Space
@@ -90,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="TextView"
+                    android:text="Hyökkäys: "
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
@@ -101,6 +115,31 @@
                     android:layout_marginEnd="5dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvStatTitleAttack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="Voitot:"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvStatAttack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="00"
                     android:textSize="15sp" />
             </TableRow>
 
@@ -115,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="TextView"
+                    android:text="Puolustus: "
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
@@ -126,6 +165,31 @@
                     android:layout_marginEnd="5dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvStatTitleDefense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="Tappiot:"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvStatDefense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="00"
                     android:textSize="15sp" />
             </TableRow>
 
@@ -140,7 +204,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="TextView"
+                    android:text="Elämä: "
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
@@ -152,6 +216,33 @@
                     android:text="TextView"
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvStatTitleTrainDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="Treenipäivät:"
+                    android:textSize="15sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvStatTrainDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="7"
+                    android:textSize="15sp"
+                    android:visibility="visible" />
             </TableRow>
 
             <TableRow
@@ -165,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="TextView"
+                    android:text="Kokemus: "
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
@@ -178,13 +269,33 @@
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/tvID"
+                <Space
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvStatTitleExp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
                     android:gravity="end"
-                    android:text="ID: 00"
-                    android:textSize="15sp" />
+                    android:text="TextView"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvStatExp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:text="TextView"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
             </TableRow>
 
         </LinearLayout>
